@@ -1,0 +1,66 @@
+{
+    "name": "olusodotdev/oluso-php",
+    "description": "AI-powered error monitoring for PHP applications: automatic error reporting, breadcrumb tracking, and intelligent error grouping.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["error", "monitoring", "reporting", "error-tracking", "error-monitoring", "ai", "crash-reporting", "logging", "debugging", "laravel"],
+    "authors": [
+        { "name": "David Ezeh" }
+    ],
+    "homepage": "https://github.com/olusodotdev/oluso-php",
+    "support": {
+        "issues": "https://github.com/olusodotdev/oluso-php/issues",
+        "source": "https://github.com/olusodotdev/oluso-php"
+    },
+    "require": {
+        "php": "^8.1",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "orchestra/testbench": "^8.0 || ^9.0",
+        "phpstan/phpstan": "^1.11",
+        "friendsofphp/php-cs-fixer": "^3.57"
+    },
+    "autoload": {
+        "psr-4": {
+            "Oluso\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Oluso\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Oluso\\Laravel\\OlusoServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse",
+        "cs": "php-cs-fixer fix --dry-run --diff"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "audit": {
+            "ignore": {
+                "PKSA-m5cs-t1y6-qpcs": "laravel/framework, dev-only via orchestra/testbench (not a runtime dependency of this package); no fix exists in the 11.x line this package's PHP 8.1 floor requires, only 12.61.1+",
+                "PKSA-3r5d-mb8f-1qw9": "laravel/framework, dev-only via orchestra/testbench; no fix in 11.x, only 12.60.0+",
+                "PKSA-mdq4-51ck-6kdq": "laravel/framework, dev-only via orchestra/testbench; same CRLF injection advisory as PKSA-3r5d-mb8f-1qw9, reported via a second source",
+                "PKSA-8qx3-n5y5-vvnd": "laravel/framework, dev-only via orchestra/testbench; fixed in 11.44.1+, tolerated for the 11.0-11.44.0 range this package's tests may resolve to",
+                "PKSA-q46n-4fdk-zjr4": "laravel/framework, dev-only via orchestra/testbench; reflected XSS via route param in debug-mode error page, irrelevant to a non-web PHPUnit test harness",
+                "PKSA-qzrn-rnz3-85w1": "laravel/framework, dev-only via orchestra/testbench; reflected XSS via request param in debug-mode error page, irrelevant to a non-web PHPUnit test harness",
+                "PKSA-w7xr-vk7n-rstm": "laravel/framework, dev-only via orchestra/testbench; environment manipulation via query string, irrelevant to a non-web PHPUnit test harness"
+            }
+        }
+    }
+}
